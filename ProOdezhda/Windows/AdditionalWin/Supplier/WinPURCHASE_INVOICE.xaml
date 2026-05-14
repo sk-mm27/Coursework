@@ -1,0 +1,90 @@
+﻿<Window x:Class="ProOdezhda.Windows.WinPURCHASE_INVOICE"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProOdezhda.Windows"
+        mc:Ignorable="d"
+        Title="WinPURCHASE_INVOICE" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FF852DFF"/>
+                <GradientStop Color="#FF2A0859" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="78*"/>
+            <RowDefinition Height="78*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="20" BorderBrush="Black" BorderThickness="1" Background="White" Grid.RowSpan="9" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock x:Name="NAME_F" Grid.Column="1" Margin="215,10,215,9" TextWrapping="Wrap" Text="СОЗДАНИЕ ПРИХОДНОЙ НАКЛАДНОЙ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextAlignment="Center" FontWeight="Bold" Grid.Row="1"  Foreground="#FF510FAD"/>
+
+        <Button Grid.Row ="1" Grid.Column="1" Content="СОХРАНИТЬ" HorizontalAlignment="Right" Height="22" Margin="0,10,35,11" VerticalAlignment="Center" Width="130" FontSize="12" Click="BC_Save">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF320571" Offset="1"/>
+                    <GradientStop Color="#FF9040FF"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <DatePicker x:Name="DATE" Height="24" Margin="112,2,396,1" VerticalAlignment="Center" x:FieldModifier="public" Grid.Row="2" BorderBrush="Black" Grid.Column="1"/>
+        <TextBlock Text="Дата оформления" HorizontalAlignment="Left" Margin="10,6,0,5" VerticalAlignment="Center" Width="99" Grid.Column="1" Grid.Row="2" Foreground="#FF510FAD" Height="16"/>
+
+        <ComboBox x:Name="ORDERs" Height="24" Margin="112,1,396,2" VerticalAlignment="Center" x:FieldModifier="public" Grid.Column="1" Grid.Row="4" BorderBrush="Black" IsEnabled="False" Foreground="Black" SelectionChanged="ORDERs_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Foreground="Black">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}№{0} от {1:dd.MM.yyyy} до {2:dd.MM.yyyy}">
+                                <Binding Path="ORDER_ID"/>
+                                <Binding Path="DATE"/>
+                                <Binding Path="CUTOFF_DATE"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock x:Name="N_ORDER" Text="Заказ" HorizontalAlignment="Left" Margin="10,5,0,6" VerticalAlignment="Center" Width="98" Grid.Row="4" Foreground="Gray" Height="16" Grid.Column="1"/>
+
+        <ComboBox x:Name="COUNTERPARTYs" Height="24" Margin="112,2,10,1" VerticalAlignment="Center" x:FieldModifier="public" Grid.Row="3" BorderBrush="Black" Grid.Column="1" Background="White" SelectionChanged="COUNTERPARTYs_SelectionChanged"/>
+
+        <TextBlock Text="Поставщик" HorizontalAlignment="Left" Margin="10,6,0,6" VerticalAlignment="Center" Width="98" Grid.Column="1" Grid.Row="3" Foreground="#FF510FAD" Height="15"/>
+
+        <DataGrid x:Name="LIST_Grid" Margin="12,0,10,11" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" Grid.Row="5" Grid.RowSpan="5" Grid.Column="1" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding FK_NOMENCLATURE_ID}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Материал" Binding="{Binding NOMENCLATURE.NAME}"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding QUANTITY}"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding PRICE}"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding SUM}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row ="1" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="35,10,0,11" VerticalAlignment="Center" Width="89" FontSize="12" Content="ОТМЕНА" Click="BC_Cancel">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF320571" Offset="1"/>
+                    <GradientStop Color="#FF9040FF"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

@@ -1,0 +1,86 @@
+﻿<Window x:Class="ProOdezhda.Windows.WinCOUNTERPARTY"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProOdezhda.Windows" xmlns:wpfTool="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="WinCOUNTERPARTY" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FF852DFF"/>
+                <GradientStop Color="#FF2A0859" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="20" BorderBrush="Black" BorderThickness="1" Background="White" Grid.RowSpan="11" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock x:Name="NAME_F" Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="СОЗДАНИЕ КОНТРАГЕНТА" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextAlignment="Center" FontWeight="Bold"  Foreground="#FF510FAD" Grid.ColumnSpan="2" Grid.Row="1"/>
+
+        <Button Grid.Row ="1" Grid.Column="1" Content="СОХРАНИТЬ" HorizontalAlignment="Right" Height="22" Margin="0,10,35,11" VerticalAlignment="Center" Width="130" FontSize="12" Click="BC_Cancel">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF320571" Offset="1"/>
+                    <GradientStop Color="#FF9040FF"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Grid.Row ="1" Grid.Column="1" Content="ОТМЕНА" HorizontalAlignment="Left" Height="22" Margin="35,10,0,11" VerticalAlignment="Center" Width="89" FontSize="12" Click="BC_Save">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF320571" Offset="1"/>
+                    <GradientStop Color="#FF9040FF"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox Grid.Row ="2" Grid.Column="1" x:Name="NAME" Height="24" Margin="139,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" Background="White" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="2" Grid.Column="1" Text="Наименование" HorizontalAlignment="Left" Margin="10,5,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <ComboBox Grid.Row ="3" Grid.Column="1" x:Name="TYPE" Height="24" Margin="139,0,10,0" VerticalAlignment="Center" x:FieldModifier="public" Background="White" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="3" Grid.Column="1" Text="Тип" HorizontalAlignment="Left" Margin="10,5,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <TextBox Grid.Row ="4" Grid.Column="1" x:Name="ADDRESS" Height="24" Margin="139,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" Background="White" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="4" Grid.Column="1" Text="Адрес" HorizontalAlignment="Left" Margin="10,5,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <wpfTool:MaskedTextBox Mask="000000000000" Grid.Row ="5" Grid.Column="1" x:Name="INN" Margin="139,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" MouseDoubleClick="MouseDoubleClick_CursorToStart" Background="White" Height="22" HorizontalAlignment="Left" Width="117" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="5" Grid.Column="1" Text="ИНН" HorizontalAlignment="Left" Margin="10,5,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <wpfTool:MaskedTextBox Mask="000000000" Grid.Row ="6" Grid.Column="1" x:Name="KPP" Margin="139,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" MouseDoubleClick="MouseDoubleClick_CursorToStart" Background="White" Height="22" HorizontalAlignment="Left" Width="117" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="6" Grid.Column="1" Text="КПП" HorizontalAlignment="Left" Margin="10,5,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <wpfTool:MaskedTextBox Mask="0000000000000" Grid.Row ="7" Grid.Column="1" x:Name="OGRN" Margin="139,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" MouseDoubleClick="MouseDoubleClick_CursorToStart" Background="White" Height="22" HorizontalAlignment="Left" Width="117" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="7" Grid.Column="1" Text="ОГРН" HorizontalAlignment="Left" Margin="10,5,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <TextBox Grid.Row ="8" Grid.Column="1" x:Name="DIRECTOR" Height="24" Margin="139,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" Background="White" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="8" Grid.Column="1" Text="ФИО директора" HorizontalAlignment="Left" Margin="10,4,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <wpfTool:MaskedTextBox Mask="+8 (000) 000-00-00" Grid.Row ="9" Grid.Column="1" x:Name="TELEPHONE" Height="24" Margin="139,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" MouseDoubleClick="MouseDoubleClick_CursorToStart" Background="White" HorizontalAlignment="Left" Width="117" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="9" Grid.Column="1" Text="Телефон" HorizontalAlignment="Left" Margin="10,5,0,4" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <TextBox Grid.Row ="10" Grid.Column="1" x:Name="EMAIL" Height="24" Margin="139,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center" x:FieldModifier="public" Background="White" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="10" Grid.Column="1" Text="Email" HorizontalAlignment="Left" Margin="10,4,0,5" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+
+        <ComboBox Grid.Row ="11" Grid.Column="1" x:Name="CATEGORY_C" Height="24" Margin="139,0,10,0" VerticalAlignment="Center" x:FieldModifier="public" Background="White" BorderBrush="Black"/>
+        <TextBlock Grid.Row ="11" Grid.Column="1" Text="Категория" HorizontalAlignment="Left" Margin="10,5,0,4" VerticalAlignment="Center" Width="124" FontSize="14" Foreground="#FF510FAD"/>
+    </Grid>
+</Window>
