@@ -16,6 +16,17 @@
 Для создания базы данных использовался Microsoft SQL Server. [Скрипт создания базы данных.](https://github.com/sk-mm27/Coursework/blob/master/CreationProOdezhdaDatabase.sql)
 <img alt="Документ3" src="https://github.com/user-attachments/assets/8c9b3487-2798-4d53-a1aa-a8960b3c55fa" />
 
+| | | |
+|:---------------:|:------------------:|:---------------:|
+|<img alt="BD(1)" src="https://github.com/user-attachments/assets/46ce80e8-4c41-4622-a51c-aef9d595c6e8" />|<img alt="BD(2)" src="https://github.com/user-attachments/assets/e1f036f7-79af-494f-af81-02acd2b34e6e" />|<img alt="BD(3)" src="https://github.com/user-attachments/assets/cb66a943-71d3-44b0-894d-4b53ee4e98c2" />|
+
+| | |
+|:---------------:|:------------------:|
+|<img alt="BD(4)" src="https://github.com/user-attachments/assets/3ff83ede-ad2b-4d82-87f0-32e63e9a3a15" />|<img alt="BD(5)" src="https://github.com/user-attachments/assets/865d5d5b-5c84-484e-95d2-22710f6c5a9c" />|
+
+
+
+
 ## **Функционал:**
 <img alt="UML" src="https://github.com/user-attachments/assets/2dcfeb82-2eb1-4622-a69d-454c5eca8aa3" />
 
