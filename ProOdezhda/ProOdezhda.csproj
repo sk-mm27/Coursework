@@ -66,72 +66,72 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CATEGORY_C.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="CATEGORY_N.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="COUNTERPARTY.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DISPATCH.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Functionality\AdditionalFunctionality.cs" />
     <Compile Include="Functionality\MainFunctionality.cs" />
-    <Compile Include="Model1.Context.cs">
+    <Compile Include="ModelDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs">
+    <Compile Include="ModelDataBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="ModelDataBase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>ModelDataBase.edmx</DependentUpon>
     </Compile>
     <Compile Include="NOMENCLATURE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="ORDER.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="ORDER_LIST.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="POSITION.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="PURCHASE_INVOICE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="RATING.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="REQUEST.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="REQUEST_LIST.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="RETAIL_REPORT.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="RETAIL_REPORT_LIST.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="TYPE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="USER.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="USER_ACTIVITY.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\AdditionalWin\WinCOUNTERPARTY.xaml.cs">
       <DependentUpon>WinCOUNTERPARTY.xaml</DependentUpon>
@@ -227,12 +227,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="ModelDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelDataBase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="ModelDataBase.edmx.diagram">
+      <DependentUpon>ModelDataBase.edmx</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -310,15 +310,15 @@
     <Resource Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
+    <Content Include="ModelDataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>ModelDataBase.edmx</DependentUpon>
+      <LastGenOutput>ModelDataBase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.tt">
+    <Content Include="ModelDataBase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>ModelDataBase.edmx</DependentUpon>
+      <LastGenOutput>ModelDataBase.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

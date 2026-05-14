@@ -1,0 +1,1214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ProOdezhdaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORY_C">
+          <Key>
+            <PropertyRef Name="CATEGORY_C_ID" />
+          </Key>
+          <Property Name="CATEGORY_C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORY_N">
+          <Key>
+            <PropertyRef Name="CATEGORY_N_ID" />
+          </Key>
+          <Property Name="CATEGORY_N_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNTERPARTY">
+          <Key>
+            <PropertyRef Name="COUNTERPARTY_ID" />
+          </Key>
+          <Property Name="COUNTERPARTY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FK_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="INN" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="KPP" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="OGRN" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="DIRECTOR" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TELEPHONE" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FK_CATEGORY_C_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="DISPATCH">
+          <Key>
+            <PropertyRef Name="DISPATCH_ID" />
+          </Key>
+          <Property Name="DISPATCH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_REQUEST_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="FK_USER_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOMENCLATURE">
+          <Key>
+            <PropertyRef Name="NOMENCLATURE_ID" />
+          </Key>
+          <Property Name="NOMENCLATURE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FK_CATEGORY_N_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="CUTOFF_DATE" Type="date" Nullable="false" />
+          <Property Name="FK_USER_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_LIST">
+          <Key>
+            <PropertyRef Name="ORDER_LIST_ID" />
+          </Key>
+          <Property Name="ORDER_LIST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_ORDER_ID" Type="int" Nullable="false" />
+          <Property Name="FK_NOMENCLATURE_ID" Type="int" Nullable="false" />
+          <Property Name="QUANTITY" Type="float" Nullable="false" />
+          <Property Name="PRICE" Type="money" Nullable="false" />
+          <Property Name="SUM" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POSITION">
+          <Key>
+            <PropertyRef Name="POSITION_ID" />
+          </Key>
+          <Property Name="POSITION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PURCHASE_INVOICE">
+          <Key>
+            <PropertyRef Name="PURCHASE_INVOICE_ID" />
+          </Key>
+          <Property Name="PURCHASE_INVOICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_ORDER_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RATING">
+          <Key>
+            <PropertyRef Name="RATING_ID" />
+          </Key>
+          <Property Name="RATING_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="int" Nullable="false" />
+          <Property Name="RATING" Type="float" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REQUEST">
+          <Key>
+            <PropertyRef Name="REQUEST_ID" />
+          </Key>
+          <Property Name="REQUEST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="CUTOFF_DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REQUEST_LIST">
+          <Key>
+            <PropertyRef Name="REQUEST_LIST_ID" />
+          </Key>
+          <Property Name="REQUEST_LIST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_REQUEST_ID" Type="int" Nullable="false" />
+          <Property Name="FK_NOMENCLATURE_ID" Type="int" Nullable="false" />
+          <Property Name="QUANTITY" Type="float" Nullable="false" />
+          <Property Name="PRICE" Type="money" Nullable="false" />
+          <Property Name="SUM" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RETAIL_REPORT">
+          <Key>
+            <PropertyRef Name="RETAIL_REPORT_ID" />
+          </Key>
+          <Property Name="RETAIL_REPORT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RETAIL_REPORT_LIST">
+          <Key>
+            <PropertyRef Name="RETAIL_REPORT_LIST_ID" />
+          </Key>
+          <Property Name="RETAIL_REPORT_LIST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_RETAIL_REPORT_ID" Type="int" Nullable="false" />
+          <Property Name="FK_NOMENCLATURE_ID" Type="int" Nullable="false" />
+          <Property Name="QUANTITY" Type="float" Nullable="false" />
+          <Property Name="PRICE" Type="money" Nullable="false" />
+          <Property Name="SUM" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="SHORT_NAME" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOGIN" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="FK_POSITION_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_ACTIVITY">
+          <Key>
+            <PropertyRef Name="USER_ACTIVITY_ID" />
+          </Key>
+          <Property Name="USER_ACTIVITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_USER_ID" Type="int" Nullable="false" />
+          <Property Name="ENTRY_TIME" Type="datetime" Nullable="false" />
+          <Property Name="EXIT_TIME" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__COUNTERPA__FK_CA__44FF419A">
+          <End Role="CATEGORY_C" Type="Self.CATEGORY_C" Multiplicity="0..1" />
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_C">
+              <PropertyRef Name="CATEGORY_C_ID" />
+            </Principal>
+            <Dependent Role="COUNTERPARTY">
+              <PropertyRef Name="FK_CATEGORY_C_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COUNTERPA__FK_TY__440B1D61">
+          <End Role="TYPE" Type="Self.TYPE" Multiplicity="1" />
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE">
+              <PropertyRef Name="TYPE_ID" />
+            </Principal>
+            <Dependent Role="COUNTERPARTY">
+              <PropertyRef Name="FK_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DISPATCH__FK_REQ__45F365D3">
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="1" />
+          <End Role="DISPATCH" Type="Self.DISPATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REQUEST">
+              <PropertyRef Name="REQUEST_ID" />
+            </Principal>
+            <Dependent Role="DISPATCH">
+              <PropertyRef Name="FK_REQUEST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DISPATCH__FK_USE__46E78A0C">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="DISPATCH" Type="Self.DISPATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="DISPATCH">
+              <PropertyRef Name="FK_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOMENCLAT__FK_CA__52593CB8">
+          <End Role="CATEGORY_N" Type="Self.CATEGORY_N" Multiplicity="0..1" />
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_N">
+              <PropertyRef Name="CATEGORY_N_ID" />
+            </Principal>
+            <Dependent Role="NOMENCLATURE">
+              <PropertyRef Name="FK_CATEGORY_N_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__FK_COUNTE__4E88ABD4">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__FK_USER_I__4F7CD00D">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="FK_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_LIS__FK_NO__5165187F">
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="1" />
+          <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOMENCLATURE">
+              <PropertyRef Name="NOMENCLATURE_ID" />
+            </Principal>
+            <Dependent Role="ORDER_LIST">
+              <PropertyRef Name="FK_NOMENCLATURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_LIS__FK_OR__5070F446">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_LIST">
+              <PropertyRef Name="FK_ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PURCHASE___FK_OR__4D94879B">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="PURCHASE_INVOICE" Type="Self.PURCHASE_INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="PURCHASE_INVOICE">
+              <PropertyRef Name="FK_ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RATING__FK_COUNT__4316F928">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="RATING" Type="Self.RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="RATING">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__FK_COUN__47DBAE45">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST_L__FK_NO__49C3F6B7">
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="1" />
+          <End Role="REQUEST_LIST" Type="Self.REQUEST_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOMENCLATURE">
+              <PropertyRef Name="NOMENCLATURE_ID" />
+            </Principal>
+            <Dependent Role="REQUEST_LIST">
+              <PropertyRef Name="FK_NOMENCLATURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST_L__FK_RE__48CFD27E">
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="1" />
+          <End Role="REQUEST_LIST" Type="Self.REQUEST_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REQUEST">
+              <PropertyRef Name="REQUEST_ID" />
+            </Principal>
+            <Dependent Role="REQUEST_LIST">
+              <PropertyRef Name="FK_REQUEST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RETAIL_RE__FK_CO__4AB81AF0">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="RETAIL_REPORT" Type="Self.RETAIL_REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="RETAIL_REPORT">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RETAIL_RE__FK_NO__4CA06362">
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="1" />
+          <End Role="RETAIL_REPORT_LIST" Type="Self.RETAIL_REPORT_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOMENCLATURE">
+              <PropertyRef Name="NOMENCLATURE_ID" />
+            </Principal>
+            <Dependent Role="RETAIL_REPORT_LIST">
+              <PropertyRef Name="FK_NOMENCLATURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RETAIL_RE__FK_RE__4BAC3F29">
+          <End Role="RETAIL_REPORT" Type="Self.RETAIL_REPORT" Multiplicity="1" />
+          <End Role="RETAIL_REPORT_LIST" Type="Self.RETAIL_REPORT_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RETAIL_REPORT">
+              <PropertyRef Name="RETAIL_REPORT_ID" />
+            </Principal>
+            <Dependent Role="RETAIL_REPORT_LIST">
+              <PropertyRef Name="FK_RETAIL_REPORT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USER__FK_POSITIO__534D60F1">
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSITION">
+              <PropertyRef Name="POSITION_ID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="FK_POSITION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USER_ACTI__FK_US__5441852A">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="USER_ACTIVITY" Type="Self.USER_ACTIVITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USER_ACTIVITY">
+              <PropertyRef Name="FK_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ProOdezhdaModelContainer">
+          <EntitySet Name="CATEGORY_C" EntityType="Self.CATEGORY_C" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORY_N" EntityType="Self.CATEGORY_N" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUNTERPARTY" EntityType="Self.COUNTERPARTY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DISPATCH" EntityType="Self.DISPATCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOMENCLATURE" EntityType="Self.NOMENCLATURE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER" EntityType="Self.ORDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_LIST" EntityType="Self.ORDER_LIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POSITION" EntityType="Self.POSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PURCHASE_INVOICE" EntityType="Self.PURCHASE_INVOICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RATING" EntityType="Self.RATING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REQUEST" EntityType="Self.REQUEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REQUEST_LIST" EntityType="Self.REQUEST_LIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RETAIL_REPORT" EntityType="Self.RETAIL_REPORT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RETAIL_REPORT_LIST" EntityType="Self.RETAIL_REPORT_LIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPE" EntityType="Self.TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_ACTIVITY" EntityType="Self.USER_ACTIVITY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__COUNTERPA__FK_CA__44FF419A" Association="Self.FK__COUNTERPA__FK_CA__44FF419A">
+            <End Role="CATEGORY_C" EntitySet="CATEGORY_C" />
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COUNTERPA__FK_TY__440B1D61" Association="Self.FK__COUNTERPA__FK_TY__440B1D61">
+            <End Role="TYPE" EntitySet="TYPE" />
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DISPATCH__FK_REQ__45F365D3" Association="Self.FK__DISPATCH__FK_REQ__45F365D3">
+            <End Role="REQUEST" EntitySet="REQUEST" />
+            <End Role="DISPATCH" EntitySet="DISPATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DISPATCH__FK_USE__46E78A0C" Association="Self.FK__DISPATCH__FK_USE__46E78A0C">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="DISPATCH" EntitySet="DISPATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOMENCLAT__FK_CA__52593CB8" Association="Self.FK__NOMENCLAT__FK_CA__52593CB8">
+            <End Role="CATEGORY_N" EntitySet="CATEGORY_N" />
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATURE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__FK_COUNTE__4E88ABD4" Association="Self.FK__ORDER__FK_COUNTE__4E88ABD4">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTY" />
+            <End Role="ORDER" EntitySet="ORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__FK_USER_I__4F7CD00D" Association="Self.FK__ORDER__FK_USER_I__4F7CD00D">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ORDER" EntitySet="ORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_LIS__FK_NO__5165187F" Association="Self.FK__ORDER_LIS__FK_NO__5165187F">
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATURE" />
+            <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_LIS__FK_OR__5070F446" Association="Self.FK__ORDER_LIS__FK_OR__5070F446">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PURCHASE___FK_OR__4D94879B" Association="Self.FK__PURCHASE___FK_OR__4D94879B">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="PURCHASE_INVOICE" EntitySet="PURCHASE_INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RATING__FK_COUNT__4316F928" Association="Self.FK__RATING__FK_COUNT__4316F928">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTY" />
+            <End Role="RATING" EntitySet="RATING" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__FK_COUN__47DBAE45" Association="Self.FK__REQUEST__FK_COUN__47DBAE45">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTY" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST_L__FK_NO__49C3F6B7" Association="Self.FK__REQUEST_L__FK_NO__49C3F6B7">
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATURE" />
+            <End Role="REQUEST_LIST" EntitySet="REQUEST_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST_L__FK_RE__48CFD27E" Association="Self.FK__REQUEST_L__FK_RE__48CFD27E">
+            <End Role="REQUEST" EntitySet="REQUEST" />
+            <End Role="REQUEST_LIST" EntitySet="REQUEST_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RETAIL_RE__FK_CO__4AB81AF0" Association="Self.FK__RETAIL_RE__FK_CO__4AB81AF0">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTY" />
+            <End Role="RETAIL_REPORT" EntitySet="RETAIL_REPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RETAIL_RE__FK_NO__4CA06362" Association="Self.FK__RETAIL_RE__FK_NO__4CA06362">
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATURE" />
+            <End Role="RETAIL_REPORT_LIST" EntitySet="RETAIL_REPORT_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RETAIL_RE__FK_RE__4BAC3F29" Association="Self.FK__RETAIL_RE__FK_RE__4BAC3F29">
+            <End Role="RETAIL_REPORT" EntitySet="RETAIL_REPORT" />
+            <End Role="RETAIL_REPORT_LIST" EntitySet="RETAIL_REPORT_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USER__FK_POSITIO__534D60F1" Association="Self.FK__USER__FK_POSITIO__534D60F1">
+            <End Role="POSITION" EntitySet="POSITION" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USER_ACTI__FK_US__5441852A" Association="Self.FK__USER_ACTI__FK_US__5441852A">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="USER_ACTIVITY" EntitySet="USER_ACTIVITY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProOdezhdaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORY_C">
+          <Key>
+            <PropertyRef Name="CATEGORY_C_ID" />
+          </Key>
+          <Property Name="CATEGORY_C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="COUNTERPARTies" Relationship="Self.FK__COUNTERPA__FK_CA__44FF419A" FromRole="CATEGORY_C" ToRole="COUNTERPARTY" />
+        </EntityType>
+        <EntityType Name="CATEGORY_N">
+          <Key>
+            <PropertyRef Name="CATEGORY_N_ID" />
+          </Key>
+          <Property Name="CATEGORY_N_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NOMENCLATUREs" Relationship="Self.FK__NOMENCLAT__FK_CA__52593CB8" FromRole="CATEGORY_N" ToRole="NOMENCLATURE" />
+        </EntityType>
+        <EntityType Name="COUNTERPARTY">
+          <Key>
+            <PropertyRef Name="COUNTERPARTY_ID" />
+          </Key>
+          <Property Name="COUNTERPARTY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FK_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INN" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KPP" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OGRN" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECTOR" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_CATEGORY_C_ID" Type="Int32" />
+          <NavigationProperty Name="CATEGORY_C" Relationship="Self.FK__COUNTERPA__FK_CA__44FF419A" FromRole="COUNTERPARTY" ToRole="CATEGORY_C" />
+          <NavigationProperty Name="TYPE" Relationship="Self.FK__COUNTERPA__FK_TY__440B1D61" FromRole="COUNTERPARTY" ToRole="TYPE" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__FK_COUNTE__4E88ABD4" FromRole="COUNTERPARTY" ToRole="ORDER" />
+          <NavigationProperty Name="RATINGs" Relationship="Self.FK__RATING__FK_COUNT__4316F928" FromRole="COUNTERPARTY" ToRole="RATING" />
+          <NavigationProperty Name="REQUESTs" Relationship="Self.FK__REQUEST__FK_COUN__47DBAE45" FromRole="COUNTERPARTY" ToRole="REQUEST" />
+          <NavigationProperty Name="RETAIL_REPORT" Relationship="Self.FK__RETAIL_RE__FK_CO__4AB81AF0" FromRole="COUNTERPARTY" ToRole="RETAIL_REPORT" />
+        </EntityType>
+        <EntityType Name="DISPATCH">
+          <Key>
+            <PropertyRef Name="DISPATCH_ID" />
+          </Key>
+          <Property Name="DISPATCH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_REQUEST_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FK_USER_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="REQUEST" Relationship="Self.FK__DISPATCH__FK_REQ__45F365D3" FromRole="DISPATCH" ToRole="REQUEST" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__DISPATCH__FK_USE__46E78A0C" FromRole="DISPATCH" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="NOMENCLATURE">
+          <Key>
+            <PropertyRef Name="NOMENCLATURE_ID" />
+          </Key>
+          <Property Name="NOMENCLATURE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FK_CATEGORY_N_ID" Type="Int32" />
+          <NavigationProperty Name="CATEGORY_N" Relationship="Self.FK__NOMENCLAT__FK_CA__52593CB8" FromRole="NOMENCLATURE" ToRole="CATEGORY_N" />
+          <NavigationProperty Name="ORDER_LIST" Relationship="Self.FK__ORDER_LIS__FK_NO__5165187F" FromRole="NOMENCLATURE" ToRole="ORDER_LIST" />
+          <NavigationProperty Name="REQUEST_LIST" Relationship="Self.FK__REQUEST_L__FK_NO__49C3F6B7" FromRole="NOMENCLATURE" ToRole="REQUEST_LIST" />
+          <NavigationProperty Name="RETAIL_REPORT_LIST" Relationship="Self.FK__RETAIL_RE__FK_NO__4CA06362" FromRole="NOMENCLATURE" ToRole="RETAIL_REPORT_LIST" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CUTOFF_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FK_USER_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COUNTERPARTY" Relationship="Self.FK__ORDER__FK_COUNTE__4E88ABD4" FromRole="ORDER" ToRole="COUNTERPARTY" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__ORDER__FK_USER_I__4F7CD00D" FromRole="ORDER" ToRole="USER" />
+          <NavigationProperty Name="ORDER_LIST" Relationship="Self.FK__ORDER_LIS__FK_OR__5070F446" FromRole="ORDER" ToRole="ORDER_LIST" />
+          <NavigationProperty Name="PURCHASE_INVOICE" Relationship="Self.FK__PURCHASE___FK_OR__4D94879B" FromRole="ORDER" ToRole="PURCHASE_INVOICE" />
+        </EntityType>
+        <EntityType Name="ORDER_LIST">
+          <Key>
+            <PropertyRef Name="ORDER_LIST_ID" />
+          </Key>
+          <Property Name="ORDER_LIST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ORDER_ID" Type="Int32" Nullable="false" />
+          <Property Name="FK_NOMENCLATURE_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Double" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SUM" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="NOMENCLATURE" Relationship="Self.FK__ORDER_LIS__FK_NO__5165187F" FromRole="ORDER_LIST" ToRole="NOMENCLATURE" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK__ORDER_LIS__FK_OR__5070F446" FromRole="ORDER_LIST" ToRole="ORDER" />
+        </EntityType>
+        <EntityType Name="POSITION">
+          <Key>
+            <PropertyRef Name="POSITION_ID" />
+          </Key>
+          <Property Name="POSITION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK__USER__FK_POSITIO__534D60F1" FromRole="POSITION" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="PURCHASE_INVOICE">
+          <Key>
+            <PropertyRef Name="PURCHASE_INVOICE_ID" />
+          </Key>
+          <Property Name="PURCHASE_INVOICE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ORDER_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK__PURCHASE___FK_OR__4D94879B" FromRole="PURCHASE_INVOICE" ToRole="ORDER" />
+        </EntityType>
+        <EntityType Name="RATING">
+          <Key>
+            <PropertyRef Name="RATING_ID" />
+          </Key>
+          <Property Name="RATING_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="Int32" Nullable="false" />
+          <Property Name="RATING1" Type="Double" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="COUNTERPARTY" Relationship="Self.FK__RATING__FK_COUNT__4316F928" FromRole="RATING" ToRole="COUNTERPARTY" />
+        </EntityType>
+        <EntityType Name="REQUEST">
+          <Key>
+            <PropertyRef Name="REQUEST_ID" />
+          </Key>
+          <Property Name="REQUEST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CUTOFF_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="COUNTERPARTY" Relationship="Self.FK__REQUEST__FK_COUN__47DBAE45" FromRole="REQUEST" ToRole="COUNTERPARTY" />
+          <NavigationProperty Name="DISPATCHes" Relationship="Self.FK__DISPATCH__FK_REQ__45F365D3" FromRole="REQUEST" ToRole="DISPATCH" />
+          <NavigationProperty Name="REQUEST_LIST" Relationship="Self.FK__REQUEST_L__FK_RE__48CFD27E" FromRole="REQUEST" ToRole="REQUEST_LIST" />
+        </EntityType>
+        <EntityType Name="REQUEST_LIST">
+          <Key>
+            <PropertyRef Name="REQUEST_LIST_ID" />
+          </Key>
+          <Property Name="REQUEST_LIST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_REQUEST_ID" Type="Int32" Nullable="false" />
+          <Property Name="FK_NOMENCLATURE_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Double" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SUM" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="NOMENCLATURE" Relationship="Self.FK__REQUEST_L__FK_NO__49C3F6B7" FromRole="REQUEST_LIST" ToRole="NOMENCLATURE" />
+          <NavigationProperty Name="REQUEST" Relationship="Self.FK__REQUEST_L__FK_RE__48CFD27E" FromRole="REQUEST_LIST" ToRole="REQUEST" />
+        </EntityType>
+        <EntityType Name="RETAIL_REPORT">
+          <Key>
+            <PropertyRef Name="RETAIL_REPORT_ID" />
+          </Key>
+          <Property Name="RETAIL_REPORT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_COUNTERPARTY_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="COUNTERPARTY" Relationship="Self.FK__RETAIL_RE__FK_CO__4AB81AF0" FromRole="RETAIL_REPORT" ToRole="COUNTERPARTY" />
+          <NavigationProperty Name="RETAIL_REPORT_LIST" Relationship="Self.FK__RETAIL_RE__FK_RE__4BAC3F29" FromRole="RETAIL_REPORT" ToRole="RETAIL_REPORT_LIST" />
+        </EntityType>
+        <EntityType Name="RETAIL_REPORT_LIST">
+          <Key>
+            <PropertyRef Name="RETAIL_REPORT_LIST_ID" />
+          </Key>
+          <Property Name="RETAIL_REPORT_LIST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_RETAIL_REPORT_ID" Type="Int32" Nullable="false" />
+          <Property Name="FK_NOMENCLATURE_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Double" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SUM" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="NOMENCLATURE" Relationship="Self.FK__RETAIL_RE__FK_NO__4CA06362" FromRole="RETAIL_REPORT_LIST" ToRole="NOMENCLATURE" />
+          <NavigationProperty Name="RETAIL_REPORT" Relationship="Self.FK__RETAIL_RE__FK_RE__4BAC3F29" FromRole="RETAIL_REPORT_LIST" ToRole="RETAIL_REPORT" />
+        </EntityType>
+        <EntityType Name="TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SHORT_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="COUNTERPARTies" Relationship="Self.FK__COUNTERPA__FK_TY__440B1D61" FromRole="TYPE" ToRole="COUNTERPARTY" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOGIN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_POSITION_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DISPATCHes" Relationship="Self.FK__DISPATCH__FK_USE__46E78A0C" FromRole="USER" ToRole="DISPATCH" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK__ORDER__FK_USER_I__4F7CD00D" FromRole="USER" ToRole="ORDER" />
+          <NavigationProperty Name="POSITION" Relationship="Self.FK__USER__FK_POSITIO__534D60F1" FromRole="USER" ToRole="POSITION" />
+          <NavigationProperty Name="USER_ACTIVITY" Relationship="Self.FK__USER_ACTI__FK_US__5441852A" FromRole="USER" ToRole="USER_ACTIVITY" />
+        </EntityType>
+        <EntityType Name="USER_ACTIVITY">
+          <Key>
+            <PropertyRef Name="USER_ACTIVITY_ID" />
+          </Key>
+          <Property Name="USER_ACTIVITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EXIT_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__USER_ACTI__FK_US__5441852A" FromRole="USER_ACTIVITY" ToRole="USER" />
+        </EntityType>
+        <Association Name="FK__COUNTERPA__FK_CA__44FF419A">
+          <End Role="CATEGORY_C" Type="Self.CATEGORY_C" Multiplicity="0..1" />
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_C">
+              <PropertyRef Name="CATEGORY_C_ID" />
+            </Principal>
+            <Dependent Role="COUNTERPARTY">
+              <PropertyRef Name="FK_CATEGORY_C_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOMENCLAT__FK_CA__52593CB8">
+          <End Role="CATEGORY_N" Type="Self.CATEGORY_N" Multiplicity="0..1" />
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY_N">
+              <PropertyRef Name="CATEGORY_N_ID" />
+            </Principal>
+            <Dependent Role="NOMENCLATURE">
+              <PropertyRef Name="FK_CATEGORY_N_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COUNTERPA__FK_TY__440B1D61">
+          <End Role="TYPE" Type="Self.TYPE" Multiplicity="1" />
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE">
+              <PropertyRef Name="TYPE_ID" />
+            </Principal>
+            <Dependent Role="COUNTERPARTY">
+              <PropertyRef Name="FK_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__FK_COUNTE__4E88ABD4">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RATING__FK_COUNT__4316F928">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="RATING" Type="Self.RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="RATING">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__FK_COUN__47DBAE45">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RETAIL_RE__FK_CO__4AB81AF0">
+          <End Role="COUNTERPARTY" Type="Self.COUNTERPARTY" Multiplicity="1" />
+          <End Role="RETAIL_REPORT" Type="Self.RETAIL_REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTERPARTY">
+              <PropertyRef Name="COUNTERPARTY_ID" />
+            </Principal>
+            <Dependent Role="RETAIL_REPORT">
+              <PropertyRef Name="FK_COUNTERPARTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DISPATCH__FK_REQ__45F365D3">
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="1" />
+          <End Role="DISPATCH" Type="Self.DISPATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REQUEST">
+              <PropertyRef Name="REQUEST_ID" />
+            </Principal>
+            <Dependent Role="DISPATCH">
+              <PropertyRef Name="FK_REQUEST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DISPATCH__FK_USE__46E78A0C">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="DISPATCH" Type="Self.DISPATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="DISPATCH">
+              <PropertyRef Name="FK_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_LIS__FK_NO__5165187F">
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="1" />
+          <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOMENCLATURE">
+              <PropertyRef Name="NOMENCLATURE_ID" />
+            </Principal>
+            <Dependent Role="ORDER_LIST">
+              <PropertyRef Name="FK_NOMENCLATURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST_L__FK_NO__49C3F6B7">
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="1" />
+          <End Role="REQUEST_LIST" Type="Self.REQUEST_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOMENCLATURE">
+              <PropertyRef Name="NOMENCLATURE_ID" />
+            </Principal>
+            <Dependent Role="REQUEST_LIST">
+              <PropertyRef Name="FK_NOMENCLATURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RETAIL_RE__FK_NO__4CA06362">
+          <End Role="NOMENCLATURE" Type="Self.NOMENCLATURE" Multiplicity="1" />
+          <End Role="RETAIL_REPORT_LIST" Type="Self.RETAIL_REPORT_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOMENCLATURE">
+              <PropertyRef Name="NOMENCLATURE_ID" />
+            </Principal>
+            <Dependent Role="RETAIL_REPORT_LIST">
+              <PropertyRef Name="FK_NOMENCLATURE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER__FK_USER_I__4F7CD00D">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="FK_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_LIS__FK_OR__5070F446">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_LIST">
+              <PropertyRef Name="FK_ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PURCHASE___FK_OR__4D94879B">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="PURCHASE_INVOICE" Type="Self.PURCHASE_INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="PURCHASE_INVOICE">
+              <PropertyRef Name="FK_ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USER__FK_POSITIO__534D60F1">
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSITION">
+              <PropertyRef Name="POSITION_ID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="FK_POSITION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST_L__FK_RE__48CFD27E">
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="1" />
+          <End Role="REQUEST_LIST" Type="Self.REQUEST_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REQUEST">
+              <PropertyRef Name="REQUEST_ID" />
+            </Principal>
+            <Dependent Role="REQUEST_LIST">
+              <PropertyRef Name="FK_REQUEST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RETAIL_RE__FK_RE__4BAC3F29">
+          <End Role="RETAIL_REPORT" Type="Self.RETAIL_REPORT" Multiplicity="1" />
+          <End Role="RETAIL_REPORT_LIST" Type="Self.RETAIL_REPORT_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RETAIL_REPORT">
+              <PropertyRef Name="RETAIL_REPORT_ID" />
+            </Principal>
+            <Dependent Role="RETAIL_REPORT_LIST">
+              <PropertyRef Name="FK_RETAIL_REPORT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USER_ACTI__FK_US__5441852A">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="USER_ACTIVITY" Type="Self.USER_ACTIVITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USER_ACTIVITY">
+              <PropertyRef Name="FK_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProOdezhdaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORY_C" EntityType="Self.CATEGORY_C" />
+          <EntitySet Name="CATEGORY_N" EntityType="Self.CATEGORY_N" />
+          <EntitySet Name="COUNTERPARTies" EntityType="Self.COUNTERPARTY" />
+          <EntitySet Name="DISPATCHes" EntityType="Self.DISPATCH" />
+          <EntitySet Name="NOMENCLATUREs" EntityType="Self.NOMENCLATURE" />
+          <EntitySet Name="ORDERs" EntityType="Self.ORDER" />
+          <EntitySet Name="ORDER_LIST" EntityType="Self.ORDER_LIST" />
+          <EntitySet Name="POSITIONs" EntityType="Self.POSITION" />
+          <EntitySet Name="PURCHASE_INVOICE" EntityType="Self.PURCHASE_INVOICE" />
+          <EntitySet Name="RATINGs" EntityType="Self.RATING" />
+          <EntitySet Name="REQUESTs" EntityType="Self.REQUEST" />
+          <EntitySet Name="REQUEST_LIST" EntityType="Self.REQUEST_LIST" />
+          <EntitySet Name="RETAIL_REPORT" EntityType="Self.RETAIL_REPORT" />
+          <EntitySet Name="RETAIL_REPORT_LIST" EntityType="Self.RETAIL_REPORT_LIST" />
+          <EntitySet Name="TYPEs" EntityType="Self.TYPE" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <EntitySet Name="USER_ACTIVITY" EntityType="Self.USER_ACTIVITY" />
+          <AssociationSet Name="FK__COUNTERPA__FK_CA__44FF419A" Association="Self.FK__COUNTERPA__FK_CA__44FF419A">
+            <End Role="CATEGORY_C" EntitySet="CATEGORY_C" />
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOMENCLAT__FK_CA__52593CB8" Association="Self.FK__NOMENCLAT__FK_CA__52593CB8">
+            <End Role="CATEGORY_N" EntitySet="CATEGORY_N" />
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATUREs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COUNTERPA__FK_TY__440B1D61" Association="Self.FK__COUNTERPA__FK_TY__440B1D61">
+            <End Role="TYPE" EntitySet="TYPEs" />
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__FK_COUNTE__4E88ABD4" Association="Self.FK__ORDER__FK_COUNTE__4E88ABD4">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTies" />
+            <End Role="ORDER" EntitySet="ORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RATING__FK_COUNT__4316F928" Association="Self.FK__RATING__FK_COUNT__4316F928">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTies" />
+            <End Role="RATING" EntitySet="RATINGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__FK_COUN__47DBAE45" Association="Self.FK__REQUEST__FK_COUN__47DBAE45">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTies" />
+            <End Role="REQUEST" EntitySet="REQUESTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RETAIL_RE__FK_CO__4AB81AF0" Association="Self.FK__RETAIL_RE__FK_CO__4AB81AF0">
+            <End Role="COUNTERPARTY" EntitySet="COUNTERPARTies" />
+            <End Role="RETAIL_REPORT" EntitySet="RETAIL_REPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DISPATCH__FK_REQ__45F365D3" Association="Self.FK__DISPATCH__FK_REQ__45F365D3">
+            <End Role="REQUEST" EntitySet="REQUESTs" />
+            <End Role="DISPATCH" EntitySet="DISPATCHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DISPATCH__FK_USE__46E78A0C" Association="Self.FK__DISPATCH__FK_USE__46E78A0C">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="DISPATCH" EntitySet="DISPATCHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_LIS__FK_NO__5165187F" Association="Self.FK__ORDER_LIS__FK_NO__5165187F">
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATUREs" />
+            <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST_L__FK_NO__49C3F6B7" Association="Self.FK__REQUEST_L__FK_NO__49C3F6B7">
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATUREs" />
+            <End Role="REQUEST_LIST" EntitySet="REQUEST_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RETAIL_RE__FK_NO__4CA06362" Association="Self.FK__RETAIL_RE__FK_NO__4CA06362">
+            <End Role="NOMENCLATURE" EntitySet="NOMENCLATUREs" />
+            <End Role="RETAIL_REPORT_LIST" EntitySet="RETAIL_REPORT_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER__FK_USER_I__4F7CD00D" Association="Self.FK__ORDER__FK_USER_I__4F7CD00D">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="ORDER" EntitySet="ORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_LIS__FK_OR__5070F446" Association="Self.FK__ORDER_LIS__FK_OR__5070F446">
+            <End Role="ORDER" EntitySet="ORDERs" />
+            <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PURCHASE___FK_OR__4D94879B" Association="Self.FK__PURCHASE___FK_OR__4D94879B">
+            <End Role="ORDER" EntitySet="ORDERs" />
+            <End Role="PURCHASE_INVOICE" EntitySet="PURCHASE_INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USER__FK_POSITIO__534D60F1" Association="Self.FK__USER__FK_POSITIO__534D60F1">
+            <End Role="POSITION" EntitySet="POSITIONs" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST_L__FK_RE__48CFD27E" Association="Self.FK__REQUEST_L__FK_RE__48CFD27E">
+            <End Role="REQUEST" EntitySet="REQUESTs" />
+            <End Role="REQUEST_LIST" EntitySet="REQUEST_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RETAIL_RE__FK_RE__4BAC3F29" Association="Self.FK__RETAIL_RE__FK_RE__4BAC3F29">
+            <End Role="RETAIL_REPORT" EntitySet="RETAIL_REPORT" />
+            <End Role="RETAIL_REPORT_LIST" EntitySet="RETAIL_REPORT_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USER_ACTI__FK_US__5441852A" Association="Self.FK__USER_ACTI__FK_US__5441852A">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="USER_ACTIVITY" EntitySet="USER_ACTIVITY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ProOdezhdaModelContainer" CdmEntityContainer="ProOdezhdaEntities">
+          <EntitySetMapping Name="CATEGORY_C">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.CATEGORY_C">
+              <MappingFragment StoreEntitySet="CATEGORY_C">
+                <ScalarProperty Name="CATEGORY_C_ID" ColumnName="CATEGORY_C_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY_N">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.CATEGORY_N">
+              <MappingFragment StoreEntitySet="CATEGORY_N">
+                <ScalarProperty Name="CATEGORY_N_ID" ColumnName="CATEGORY_N_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTERPARTies">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.COUNTERPARTY">
+              <MappingFragment StoreEntitySet="COUNTERPARTY">
+                <ScalarProperty Name="COUNTERPARTY_ID" ColumnName="COUNTERPARTY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="FK_TYPE_ID" ColumnName="FK_TYPE_ID" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="OGRN" ColumnName="OGRN" />
+                <ScalarProperty Name="DIRECTOR" ColumnName="DIRECTOR" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FK_CATEGORY_C_ID" ColumnName="FK_CATEGORY_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISPATCHes">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.DISPATCH">
+              <MappingFragment StoreEntitySet="DISPATCH">
+                <ScalarProperty Name="DISPATCH_ID" ColumnName="DISPATCH_ID" />
+                <ScalarProperty Name="FK_REQUEST_ID" ColumnName="FK_REQUEST_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="FK_USER_ID" ColumnName="FK_USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOMENCLATUREs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.NOMENCLATURE">
+              <MappingFragment StoreEntitySet="NOMENCLATURE">
+                <ScalarProperty Name="NOMENCLATURE_ID" ColumnName="NOMENCLATURE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="FK_CATEGORY_N_ID" ColumnName="FK_CATEGORY_N_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDER">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="FK_COUNTERPARTY_ID" ColumnName="FK_COUNTERPARTY_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="CUTOFF_DATE" ColumnName="CUTOFF_DATE" />
+                <ScalarProperty Name="FK_USER_ID" ColumnName="FK_USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_LIST">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.ORDER_LIST">
+              <MappingFragment StoreEntitySet="ORDER_LIST">
+                <ScalarProperty Name="ORDER_LIST_ID" ColumnName="ORDER_LIST_ID" />
+                <ScalarProperty Name="FK_ORDER_ID" ColumnName="FK_ORDER_ID" />
+                <ScalarProperty Name="FK_NOMENCLATURE_ID" ColumnName="FK_NOMENCLATURE_ID" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="SUM" ColumnName="SUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSITIONs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.POSITION">
+              <MappingFragment StoreEntitySet="POSITION">
+                <ScalarProperty Name="POSITION_ID" ColumnName="POSITION_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PURCHASE_INVOICE">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.PURCHASE_INVOICE">
+              <MappingFragment StoreEntitySet="PURCHASE_INVOICE">
+                <ScalarProperty Name="PURCHASE_INVOICE_ID" ColumnName="PURCHASE_INVOICE_ID" />
+                <ScalarProperty Name="FK_ORDER_ID" ColumnName="FK_ORDER_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATINGs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.RATING">
+              <MappingFragment StoreEntitySet="RATING">
+                <ScalarProperty Name="RATING_ID" ColumnName="RATING_ID" />
+                <ScalarProperty Name="FK_COUNTERPARTY_ID" ColumnName="FK_COUNTERPARTY_ID" />
+                <ScalarProperty Name="RATING1" ColumnName="RATING" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REQUESTs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.REQUEST">
+              <MappingFragment StoreEntitySet="REQUEST">
+                <ScalarProperty Name="REQUEST_ID" ColumnName="REQUEST_ID" />
+                <ScalarProperty Name="FK_COUNTERPARTY_ID" ColumnName="FK_COUNTERPARTY_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="CUTOFF_DATE" ColumnName="CUTOFF_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REQUEST_LIST">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.REQUEST_LIST">
+              <MappingFragment StoreEntitySet="REQUEST_LIST">
+                <ScalarProperty Name="REQUEST_LIST_ID" ColumnName="REQUEST_LIST_ID" />
+                <ScalarProperty Name="FK_REQUEST_ID" ColumnName="FK_REQUEST_ID" />
+                <ScalarProperty Name="FK_NOMENCLATURE_ID" ColumnName="FK_NOMENCLATURE_ID" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="SUM" ColumnName="SUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RETAIL_REPORT">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.RETAIL_REPORT">
+              <MappingFragment StoreEntitySet="RETAIL_REPORT">
+                <ScalarProperty Name="RETAIL_REPORT_ID" ColumnName="RETAIL_REPORT_ID" />
+                <ScalarProperty Name="FK_COUNTERPARTY_ID" ColumnName="FK_COUNTERPARTY_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RETAIL_REPORT_LIST">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.RETAIL_REPORT_LIST">
+              <MappingFragment StoreEntitySet="RETAIL_REPORT_LIST">
+                <ScalarProperty Name="RETAIL_REPORT_LIST_ID" ColumnName="RETAIL_REPORT_LIST_ID" />
+                <ScalarProperty Name="FK_RETAIL_REPORT_ID" ColumnName="FK_RETAIL_REPORT_ID" />
+                <ScalarProperty Name="FK_NOMENCLATURE_ID" ColumnName="FK_NOMENCLATURE_ID" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="SUM" ColumnName="SUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.TYPE">
+              <MappingFragment StoreEntitySet="TYPE">
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SHORT_NAME" ColumnName="SHORT_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="FK_POSITION_ID" ColumnName="FK_POSITION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_ACTIVITY">
+            <EntityTypeMapping TypeName="ProOdezhdaModel.USER_ACTIVITY">
+              <MappingFragment StoreEntitySet="USER_ACTIVITY">
+                <ScalarProperty Name="USER_ACTIVITY_ID" ColumnName="USER_ACTIVITY_ID" />
+                <ScalarProperty Name="FK_USER_ID" ColumnName="FK_USER_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="EXIT_TIME" ColumnName="EXIT_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
