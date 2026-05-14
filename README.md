@@ -13,7 +13,7 @@
 |<img alt="2026-05-14_21-56-20" src="https://github.com/user-attachments/assets/fa665c30-2e2f-457b-81b0-96bd80d3725c" />|<img alt="2026-05-14_21-54-55" src="https://github.com/user-attachments/assets/9ad54a09-7e6c-432a-9910-6bf3a6d463ac" />|<img alt="2026-05-14_21-54-35" src="https://github.com/user-attachments/assets/c7ad9eba-6aee-4c6e-b6a2-d6b0ebeecdcd" />|
 
 ## **База данных:**
-<img width="10500" height="13643" alt="Документ3" src="https://github.com/user-attachments/assets/8c9b3487-2798-4d53-a1aa-a8960b3c55fa" />
+<img alt="Документ3" src="https://github.com/user-attachments/assets/8c9b3487-2798-4d53-a1aa-a8960b3c55fa" />
 
 ## **Функционал:**
-<img width="5213" height="4375" alt="UML" src="https://github.com/user-attachments/assets/3723667c-1101-44bf-a9d0-4f31ce147913" />
+<img alt="UML" src="https://github.com/user-attachments/assets/3723667c-1101-44bf-a9d0-4f31ce147913" />
