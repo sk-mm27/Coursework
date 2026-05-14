@@ -16,4 +16,5 @@
 <img alt="Документ3" src="https://github.com/user-attachments/assets/8c9b3487-2798-4d53-a1aa-a8960b3c55fa" />
 
 ## **Функционал:**
-<img alt="UML" src="https://github.com/user-attachments/assets/3723667c-1101-44bf-a9d0-4f31ce147913" />
+<img alt="UML" src="https://github.com/user-attachments/assets/2dcfeb82-2eb1-4622-a69d-454c5eca8aa3" />
+
